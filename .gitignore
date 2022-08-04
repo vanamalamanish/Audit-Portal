@@ -1,7 +1,5 @@
 .vscode
-tsco*
-karma*
-node*
 .browserslistrc
 .editorconfig
-.gitignore
+node*
+.angular*

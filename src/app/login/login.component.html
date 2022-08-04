@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="container">
+
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title">Login</h5>
+          
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+            <div class="mb-3">
+              <label for="username" class="form-label">UserName</label>
+              <input type="text" class="form-control" id="username" name="userName" ngModel>
+            </div>
+            <div class="mb-3">
+              <label for="Password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="Password" name="password" ngModel>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+
+
+      
+</div> 
