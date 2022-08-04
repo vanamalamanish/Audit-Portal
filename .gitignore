@@ -1,2 +1,7 @@
-
-package-lock.json
+.vscode
+tsco*
+karma*
+node*
+.browserslistrc
+.editorconfig
+.gitignore
