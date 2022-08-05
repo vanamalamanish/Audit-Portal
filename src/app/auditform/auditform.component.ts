@@ -46,7 +46,7 @@ export class AuditformComponent implements OnInit {
       }
     }
     console.log(count);
-    this.auditDetails = new AuditDetails(1,this.audittype.toString(),new Date(),count);
+    this.auditDetails = new AuditDetails(1,this.audittype.toString(),"",count);
     this.projectDetailsService.saveAuditRequestModel(1,this.auditDetails,this.projectname.toString(),this.managername.toString(),this.ownername.toString());
     console.log(this.projectDetailsService.getAuditRequestModel());
     this.router.navigate(['severity']);

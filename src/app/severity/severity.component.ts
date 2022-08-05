@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectDetailsService } from '../project-details.service';
+import { AuditResponse } from './AuditResponse';
+import { SeverityService } from './severity.service';
 
 @Component({
   selector: 'app-severity',
@@ -8,10 +10,16 @@ import { ProjectDetailsService } from '../project-details.service';
 })
 export class SeverityComponent implements OnInit {
 
-  constructor(private projectDetailsService:ProjectDetailsService) { }
+  constructor(private severityService:SeverityService) { }
 
+  auditResponse!:AuditResponse;
   ngOnInit(): void {
-    console.log(this.projectDetailsService.getAuditRequestModel());
+    this.severityService.postSeverity().subscribe(data=>{
+      this.auditResponse = data;
+      console.log(data);
+    },
+    error=>{
+      console.log(error);
+    })
   }
-
 }

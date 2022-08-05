@@ -8,19 +8,12 @@ import { AuditRequestModel } from './AuditRequestModel';
 export class ProjectDetailsService {
 
   constructor() { }
-  auditDetails!:AuditDetails;
   auditRequestModel!:AuditRequestModel;
 
-  saveAuditDetails(requestid:number,audittype:string,date:Date,countofnos:number):void{
-    this.auditDetails = new AuditDetails(requestid,audittype,date,countofnos);
-  }
-  getAuditDetails():AuditDetails{
-    return this.auditDetails;
-  }
 
-  saveAuditRequestModel(requestid:number,auditDetail:AuditDetails,projectname:string,managername:string,ownername:string)
+  saveAuditRequestModel(requestid:number,auditDetails:AuditDetails,projectname:string,managername:string,ownername:string)
   {
-    this.auditRequestModel = new AuditRequestModel(requestid,this.auditDetails,projectname,managername,ownername);
+    this.auditRequestModel = new AuditRequestModel(requestid,auditDetails,projectname,managername,ownername);
   }
   getAuditRequestModel(){
     return this.auditRequestModel;
