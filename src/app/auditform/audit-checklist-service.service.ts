@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { AuthenticationService } from '../login/authentication.service';
 
 @Injectable({
@@ -13,6 +13,11 @@ export class AuditChecklistServiceService {
 
   url:string="http://localhost:8083/checklist";
   getQuestions(auditType:String):Observable<String[]>{
-    return this.http.get<String[]>(this.url+"/AuditCheckListQuestions/"+auditType,{headers:{'Authorization':localStorage.getItem('token')!}});
+    return this.http.get<String[]>(this.url+"/AuditCheckListQuestions/"+auditType,{headers:{'Authorization':localStorage.getItem('token')!}})
+    .pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error:HttpErrorResponse){
+    return throwError(error.error || 'Internal Server Error');
   }
 }

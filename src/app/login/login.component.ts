@@ -10,6 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   token!:String;
+
+  error!:string;
+  message!:string;
   constructor(private authenticationService:AuthenticationService, private router:Router) { }
 
   ngOnInit(): void {
@@ -24,7 +27,12 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['checklist']);
     },
     error=>{
-      console.log(error);
+      if(error=="Server Error"){
+        this.error=error;
+      }
+      this.error=error;
+      this.error = this.error.substring(1,this.error.length-1).split(":")[1].split(",")[0];
+      this.error = this.error.substring(1,this.error.length-1);
     })
   }
 

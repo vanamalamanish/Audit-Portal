@@ -1,41 +1,74 @@
 <div class="container">
 
-    <form #auditForm="ngForm" (ngSubmit)="OnClick(auditForm.value)">
-        <div class="mb-3 mt-3">
-          <label for="projectname" class="form-label">Project Name: </label>
-          <input type="text" class="form-control" id="projectname" placeholder="Enter Project Name" name="projectname" ngModel>
+  <form #auditForm="ngForm" (ngSubmit)="OnClick(auditForm.value)">
+    <div class="mb-3 mt-3 row">
+      <div class="col-3">
+        <label for="projectname" class="form-label">Project Name: </label>
+      </div>
+      <div class="col-9">
+        <input type="text" class="form-control is-invalid" name="projectname" id="projectname"
+          placeholder="Enter Project Name" [(ngModel)]="projectname" #pname="ngModel" required>
+      </div>
+      <div *ngIf="pname.invalid && (pname.dirty || pname.touched)" class="alert">
+
+        <div *ngIf="pname.errors?.['required']">
+          Project Name is required.
         </div>
-        <div class="mb-3">
-          <label for="managername" class="form-label">Project Manager Name:</label>
-          <input type="text" class="form-control" id="managername" placeholder="Enter Manager Name" name="managername" ngModel >
+        <div *ngIf="pname.errors?.['minlength']">
+          Project Name must be at least 6 characters long.
         </div>
-        <div class="mb-3">
-            <label for="ownername" class="form-label">Owner Name:</label>
-            <input type="text" class="form-control" id="ownername" placeholder="Enter Owner Name" name="ownername" ngModel >
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="radio1" name="audittype" value="Internal" ngModel>
-            <label class="form-check-label" for="radio1">Internal</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="radio2" name="audittype" value="SOX" ngModel >
-            <label class="form-check-label" for="radio2">SOX</label>
-          </div>
-        <button type="submit" class="btn btn-primary">get Questions</button>
-      </form>
-      <form #questionForm="ngForm" (ngSubmit)="checkSeverity(questionForm.value)">
-        <div *ngFor="let question of questions; let i=index">
-            {{i+1}}) {{question}}
-            
-          <div class="form-check" >
-            <label class="form-check-label" ></label>
-            <input type="radio" class="form-check-input"  name={{i}} value="Yes" ngModel >Yes
-          </div>
-          <div class="form-check" >
-          <label class="form-check-label" ></label>
-          <input type="radio" class="form-check-input"  name={{i}} value="No" ngModel >No
+      </div>
+
+    </div>
+    <div class="mb-3 row">
+      <div class="col-3">
+        <label for="managername" class="form-label">Project Manager Name:</label>
+      </div>
+      <div class="col-9">
+        <input type="text" class="form-control is-invalid" id="managername" placeholder="Enter Manager Name"
+          name="managername" [(ngModel)]="managername" required>
+        <div class="valid-feedback">
+          Looks Good!
         </div>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <div class="col-3">
+        <label for="ownername" class="form-label">Owner Name:</label>
+      </div>
+      <div class="col-9">
+        <input type="text" class="form-control" id="ownername" placeholder="Enter Owner Name" name="ownername"
+          [(ngModel)]="ownername" required>
+        <div class="valid-feedback">
+          Looks Good!
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
+    </div>
+    <p>Select Audit Type: </p>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="radio1" name="audittype" value="Internal" ngModel>
+      <label class="form-check-label" for="radio1">Internal</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" id="radio2" name="audittype" value="SOX" ngModel>
+      <label class="form-check-label" for="radio2">SOX</label>
+    </div>
+    <button type="submit" class="btn btn-sm btn-outline-success">get Questions</button>
+    <p *ngIf="error!=null" class="text-danger">{{error}}</p>
+  </form>
+  <form #questionForm="ngForm" class="mt-2" (ngSubmit)="checkSeverity(questionForm.value)">
+    <div *ngFor="let question of questions; let i=index">
+      {{i+1}}) {{question}}
+
+      <div class="form-check">
+        <label class="form-check-label"></label>
+        <input type="radio" class="form-check-input" name={{i}} value="Yes" ngModel>Yes
+      </div>
+      <div class="form-check">
+        <label class="form-check-label"></label>
+        <input type="radio" class="form-check-input" name={{i}} value="No" ngModel>No
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
