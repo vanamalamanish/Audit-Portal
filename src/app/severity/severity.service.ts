@@ -16,6 +16,6 @@ export class SeverityService {
   postSeverity():Observable<AuditResponse>{
     console.log(this.projectDetailsService.getAuditRequestModel());
     const auditRequest= this.projectDetailsService.getAuditRequestModel();
-    return this.http.post<AuditResponse>(this.url+"/ProjectExecutionStatus",JSON.stringify(auditRequest),{headers:{'Authorization':localStorage.getItem('token')!,responseType:'text' as 'json'}});
+    return this.http.post<AuditResponse>(this.url+"/ProjectExecutionStatus",auditRequest,{headers:{'Authorization':localStorage.getItem('token')!,responseType:'text' as 'json'}});
   }
 }
