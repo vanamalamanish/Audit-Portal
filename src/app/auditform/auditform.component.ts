@@ -15,7 +15,7 @@ export class AuditformComponent implements OnInit {
   constructor(private auditchecklistService: AuditChecklistServiceService,
     private projectDetailsService: ProjectDetailsService,
     private router: Router) { }
-
+  flag:boolean=false;
   projectname: String="";
   ownername: String="";
   managername: String="";
@@ -35,6 +35,7 @@ export class AuditformComponent implements OnInit {
       console.log(data);
 
       this.questions = data;
+      this.flag=true;
     },
       error => {
         this.error = "Internal Server Error";
