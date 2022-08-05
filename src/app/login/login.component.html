@@ -1,24 +1,25 @@
+<h1 class="display-3 text-center">Audit Management Portal</h1><hr>
 <div class="container">
-
-  <h1 *ngIf="error!=null" class="text-danger">{{error}}</h1>
-    <div class="card" style="width: 20rem;">
+  <h3 *ngIf="error!=null" class="text-danger fw-bold">{{error}}</h3>
+    <div class="card w-25">
         <div class="card-body">
-          <h5 class="card-title">Login</h5>
+          <h5 class="card-title text-center">Login</h5><hr>
           
           <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
-            <div class="mb-3">
-              <label for="username" class="form-label">UserName</label>
+            <div class="mb-2">
+              <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control" id="username" name="userName" ngModel>
             </div>
             <div class="mb-3">
               <label for="Password" class="form-label">Password</label>
               <input type="password" class="form-control" id="Password" name="password" ngModel>
+              
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary col-12">Submit</button>
           </form>
         </div>
       </div>
-
+      
 
       
 </div> 
