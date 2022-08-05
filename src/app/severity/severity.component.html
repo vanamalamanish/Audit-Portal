@@ -1,6 +1,6 @@
 <div class="container">
     <table class="table table-hover">
-        <div *ngIf="auditResponse['executionstatus']=='RED'">
+        <div *ngIf="auditResponse['executionstatus']=='RED';else other_content">
             <tr class="table-danger">
                 <th>ExecutionStatus</th>
                 <th>ActionDuration</th>
@@ -10,7 +10,7 @@
                 <td>{{auditResponse['actionduration']}}</td>
             </tr>
         </div>
-        <div *ngIf="auditResponse['executionstatus']=='GREEN'">
+        <ng-template #other_content>
             <tr class="table-success">
                 <th>ExecutionStatus</th>
                 <th>ActionDuration</th>
@@ -19,6 +19,6 @@
                 <td>{{auditResponse['executionstatus']}}</td>
                 <td>{{auditResponse['actionduration']}}</td>
             </tr>
-        </div>
+        </ng-template>
     </table>
 </div>
