@@ -1,24 +1,28 @@
-<div class="container">
-    <table class="table table-hover">
-        <div *ngIf="auditResponse['executionstatus']=='RED';else other_content">
-            <tr class="table-danger">
-                <th>ExecutionStatus</th>
-                <th>ActionDuration</th>
-            </tr>
-            <tr class="table-danger">
-                <td>{{auditResponse['executionstatus']}}</td>
-                <td>{{auditResponse['actionduration']}}</td>
-            </tr>
+<div class="container-fluid mt-3">
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <table class="table table-hover">
+        <div *ngIf="auditResponse['executionstatus'] == 'RED'">
+          <tr class="table-danger">
+            <th>ExecutionStatus</th>
+            <th>ActionDuration</th>
+          </tr>
+          <tr class="table-danger">
+            <td>{{ auditResponse["executionstatus"] }}</td>
+            <td>{{ auditResponse["actionduration"] }}</td>
+          </tr>
         </div>
-        <ng-template #other_content>
-            <tr class="table-success">
-                <th>ExecutionStatus</th>
-                <th>ActionDuration</th>
-            </tr>
-            <tr class="table-success">
-                <td>{{auditResponse['executionstatus']}}</td>
-                <td>{{auditResponse['actionduration']}}</td>
-            </tr>
-        </ng-template>
-    </table>
+        <div *ngIf="auditResponse['executionstatus'] == 'GREEN'">
+          <tr class="table-success">
+            <th>ExecutionStatus</th>
+            <th>ActionDuration</th>
+          </tr>
+          <tr class="table-success">
+            <td>{{ auditResponse["executionstatus"] }}</td>
+            <td>{{ auditResponse["actionduration"] }}</td>
+          </tr>
+        </div>
+      </table>
+    </div>
+  </div>
 </div>
