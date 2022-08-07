@@ -1,8 +1,8 @@
 import { AuditDetails } from "./AuditDetails";
 
 export class AuditRequestModel{
-
-    constructor(private requestid:number,private auditdetail:AuditDetails,private projectname:string,
+    auditdetail!:AuditDetails;
+    constructor(private requestid:number, auditdetail:AuditDetails,private projectname:string,
         private managername:string,private ownername:string){
             this.requestid = requestid;
             this.auditdetail = auditdetail;

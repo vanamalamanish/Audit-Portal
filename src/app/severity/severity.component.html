@@ -1,8 +1,42 @@
-<div class="container-fluid mt-3">
+<div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-auto">
-      <table class="table table-hover">
+    <div class="">
+      <h1 class="mb-5">Project Details</h1>      
+      <h3 class="mt-2">
+        <div class="row">
+          <span class="col-4 fw-normal">Project Name:</span>
+          <span class="col-8 fw-normal">{{ auditrequest["projectname"]|titlecase }}</span>
+         </div><br>
+        <div class="row">
+          <span class="col-4 fw-normal">Manager Name:</span>          
+          <span class="col-8 fw-normal">{{ auditrequest["managername"] }}</span></div><br>
+        <div class="row">
+          <span class="col-4 fw-normal">Owner Name:</span>
+          
+           <span class="col-8 fw-normal">{{ auditrequest["ownername"] }}</span></div><br>
+        <div class="row">
+          <span class="col-4 fw-normal">Audit Type:</span>
+           <span class="col-8 fw-normal">{{ auditrequest.auditdetail.audittype}}</span></div><br>        
+      </h3>
+      <h2>
+        <div class="row">
+          <span class="col-4">Execution Status:</span>
+           <span *ngIf="auditResponse['executionstatus'] == 'GREEN';else red" class="col-1 badge bg-success">{{ auditResponse["executionstatus"] }}</span>
+        <ng-template #red>
+          <span class="col-1 badge bg-danger">{{ auditResponse["executionstatus"] }}</span>
+        </ng-template>
+      </div>
+        <br>
+
+        <div class="row">
+          <span class="col-4">Action Duration:</span>
+          <span class="col-4 badge bg-info">{{ auditResponse["actionduration"] }}</span></div>
+      </h2>
+      <!-- <table class="table table-hover table-responsive table-bordered" style="margin-top:13em">
+
         <div *ngIf="auditResponse['executionstatus'] == 'RED'">
+          
+          
           <tr class="table-danger">
             <th>ExecutionStatus</th>
             <th>ActionDuration</th>
@@ -13,16 +47,19 @@
           </tr>
         </div>
         <div *ngIf="auditResponse['executionstatus'] == 'GREEN'">
+          <h2>Execution Status: <span class="badge bg-success">{{ auditResponse["executionstatus"] }}</span><br>
+            Action Duration: <span class="badge bg-info">{{ auditResponse["actionduration"] }}</span></h2>
           <tr class="table-success">
             <th>ExecutionStatus</th>
             <th>ActionDuration</th>
           </tr>
           <tr class="table-success">
-            <td>{{ auditResponse["executionstatus"] }}</td>
+            <td class="badge bg-success">{{ auditResponse["executionstatus"] }}</td>
             <td>{{ auditResponse["actionduration"] }}</td>
           </tr>
         </div>
-      </table>
+      </table> -->
+      
     </div>
   </div>
 </div>

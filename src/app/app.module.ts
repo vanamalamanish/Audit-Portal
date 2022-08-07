@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AuditformComponent } from './auditform/auditform.component';
 import { SeverityComponent } from './severity/severity.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AuditformComponent,
-    SeverityComponent
+    SeverityComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

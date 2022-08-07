@@ -5,11 +5,11 @@
         <label for="projectname" class="form-label">Project Name: </label>
       </div>
       <div class="col-9">
-        <input type="text" class="form-control" name="projectname" id="projectname" placeholder="Enter Project Name"
+        <input type="text" class="form-control" name="projectname" id="projectname" placeholder="Enter Project Name" pattern="[a-zA-Z]{3}[a-zA-Z ]{3,}"
           [(ngModel)]="projectname" #pname="ngModel" aria-describedby="projname" minlength="6" required />
         <div class="form-text" id="projname" *ngIf="pname.pristine">
           Project Name is required
-        </div>
+        </div>        
         <div id="projname" *ngIf="pname.invalid && (pname.dirty || pname.touched)" class="form-text text-danger">
           <div *ngIf="pname.errors?.['required']">
             Project Name is required.
@@ -29,7 +29,7 @@
       </div>
       <div class="col-9">
         <input type="text" class="form-control" id="managername" placeholder="Enter Manager Name" name="managername"
-          [(ngModel)]="managername" #mname="ngModel" minlength="6" required />
+          [(ngModel)]="managername" #mname="ngModel" minlength="3" required />
         <div class="form-text" id="projname" *ngIf="mname.pristine">
           Manager Name is required
         </div>
@@ -38,7 +38,7 @@
             Manager Name is required.
           </div>
           <div *ngIf="mname.errors?.['minlength']">
-            Manager Name must be at least 6 characters long.
+            Manager Name must be at least 3 characters long.
           </div>
         </div>
         <div class="form-text text-success" *ngIf="mname.valid">
@@ -52,7 +52,7 @@
       </div>
       <div class="col-9">
         <input type="text" class="form-control" id="ownername" placeholder="Enter Owner Name" name="ownername"
-          [(ngModel)]="ownername" #ownname="ngModel" minlength="6" required />
+          [(ngModel)]="ownername" #ownname="ngModel" minlength="3" required />
         <div class="form-text" id="projname" *ngIf="ownname.pristine">
           Owner Name is required
         </div>
@@ -61,7 +61,7 @@
             Owner Name is required.
           </div>
           <div *ngIf="ownname.errors?.['minlength']">
-            Owner Name must be at least 6 characters long.
+            Owner Name must be at least 3 characters long.
           </div>
         </div>
         <div class="form-text text-success" *ngIf="ownname.valid">
@@ -88,7 +88,7 @@
       </div>
     </div>
 
-    <p *ngIf="error != null" class="text-danger">{{ error }}</p>
+    <p *ngIf="error != null" class=" alert alert-danger text-center" >{{ error }}</p>
   </form>
 </div>
 
