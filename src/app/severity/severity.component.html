@@ -9,11 +9,11 @@
          </div><br>
         <div class="row">
           <span class="col-4 fw-normal">Manager Name:</span>          
-          <span class="col-8 fw-normal">{{ auditrequest["managername"] }}</span></div><br>
+          <span class="col-8 fw-normal">{{ auditrequest["managername"]|titlecase }}</span></div><br>
         <div class="row">
           <span class="col-4 fw-normal">Owner Name:</span>
           
-           <span class="col-8 fw-normal">{{ auditrequest["ownername"] }}</span></div><br>
+           <span class="col-8 fw-normal">{{ auditrequest["ownername"]|titlecase }}</span></div><br>
         <div class="row">
           <span class="col-4 fw-normal">Audit Type:</span>
            <span class="col-8 fw-normal">{{ auditrequest.auditdetail.audittype}}</span></div><br>        
