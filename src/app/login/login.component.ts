@@ -27,12 +27,14 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['checklist']);
     },
     error=>{
-      if(error=="Server Error"){
-        this.error=error;
+      if(error instanceof ProgressEvent){
+        this.error="Server error";
       }
+      else{
       this.error=error;
       this.error = this.error.substring(1,this.error.length-1).split(":")[1].split(",")[0];
       this.error = this.error.substring(1,this.error.length-1);
+      }
     })
   }
 

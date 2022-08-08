@@ -9,13 +9,14 @@ import { UserCredentials } from '../UserCredentials';
 export class AuthenticationService {
 
   user!:UserCredentials;
-
+  userName:String="Unknown";
   private token!:String;
   constructor(private http:HttpClient) { }
   
 
   url:string="http://localhost:8081/auth";
   login(userCredentials:UserCredentials):Observable<String>{
+    this.userName = userCredentials.userName;
     return this.http.post<String>(this.url+"/login",userCredentials,{responseType:'text' as 'json'})
     .pipe(catchError(this.errorHandler));
   }
@@ -27,6 +28,13 @@ export class AuthenticationService {
   errorHandler(error:HttpErrorResponse){
     return throwError(error.error || "Server Error");
   }
+
+  isLoggedIn(){
+    return !!localStorage.getItem('token');
+  }
   
+  getUserName(){
+    return this.userName;
+  }
 
 }
