@@ -7,16 +7,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
-          <p class="navbar-nav me-3" *ngIf="!checkToken()">Login</p>
+      <p class="navbar-nav me-3" *ngIf="!checkToken()">Login</p>
 
-          <div *ngIf="checkToken()" class="navbar-nav me-3">
-
-
-               
-                <p class="navbar-nav" style="cursor:pointer" (click)="OnLogOut()"> {{userName | titlecase}} &nbsp;<i class="bi bi-box-arrow-right"></i></p>
-           
-          </div>
-        </div>
+      <div *ngIf="checkToken()" class="navbar-nav me-3">
+        <p class="navbar-nav" style="cursor:pointer" (click)="OnLogOut()"> {{userName | titlecase}} &nbsp;<i
+            class="bi bi-box-arrow-right"></i></p>
+      </div>
+    </div>
 
   </div>
 </nav>
