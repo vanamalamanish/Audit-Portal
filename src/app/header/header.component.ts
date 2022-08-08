@@ -9,18 +9,21 @@ import { AuthenticationService } from '../login/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService:AuthenticationService,private router:Router) { }
-
+  constructor(private router:Router) { }
+  userName!:string;
   ngOnInit(): void {
+    this.userName = localStorage.getItem('username') || "Unknown";
   }
  
-  userName = this.authService.getUserName() || "Unknown";
 
+  checkToken(){
+   return  !!localStorage.getItem('token');
+  }
 
   OnLogOut(){
     this.userName="Unknown";
-    this.authService.userName="Unknown";
     localStorage.removeItem('token');
+    localStorage.setItem('username',"Unknown");
     this.router.navigate(["login"]);
   }
 }

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(userCredentials).subscribe(data=>{
       console.log(data);
       this.token = data;
+      localStorage.setItem('username',userCredentials.userName.toString());
       localStorage.setItem('token','Bearer '+this.token.toString());
       this.router.navigate(['checklist']);
     },

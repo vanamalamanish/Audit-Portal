@@ -7,19 +7,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-3">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Login
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                
-                <li><a class="dropdown-item">{{userName}}</a></li>
-                <li><a *ngIf="userName!='Unknown'" class="dropdown-item" (click)="OnLogOut()">Log Out</a></li>
-              </ul>
-            </li>
-          </ul>
+          <p class="navbar-nav me-3" *ngIf="!checkToken()">Login</p>
+
+          <div *ngIf="checkToken()" class="navbar-nav me-3">
+
+
+               
+                <p class="navbar-nav" (click)="OnLogOut()"> {{userName | titlecase}} | Logout</p>
+           
+          </div>
         </div>
 
   </div>

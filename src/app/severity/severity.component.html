@@ -2,37 +2,42 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="">
-      <h1 class="mb-5 fs-3">Project Details</h1>      
-      <h3 class="mt-2 fs-4">
+      <h1 class="mb-5 fs-3">Project Details</h1>
+      <h3 class="mt-2 fs-5">
         <div class="row">
           <span class="col-4 fw-normal">Project Name:</span>
           <span class="col-8 fw-normal">{{ auditrequest["projectname"]|titlecase }}</span>
-         </div><br>
+        </div><br>
         <div class="row">
-          <span class="col-4 fw-normal">Manager Name:</span>          
-          <span class="col-8 fw-normal">{{ auditrequest["managername"]|titlecase }}</span></div><br>
+          <span class="col-4 fw-normal">Manager Name:</span>
+          <span class="col-8 fw-normal">{{ auditrequest["managername"]|titlecase }}</span>
+        </div><br>
         <div class="row">
           <span class="col-4 fw-normal">Owner Name:</span>
-          
-           <span class="col-8 fw-normal">{{ auditrequest["ownername"]|titlecase }}</span></div><br>
+
+          <span class="col-8 fw-normal">{{ auditrequest["ownername"]|titlecase }}</span>
+        </div><br>
         <div class="row">
           <span class="col-4 fw-normal">Audit Type:</span>
-           <span class="col-8 fw-normal">{{ auditrequest.auditdetail.audittype}}</span></div><br>        
+          <span class="col-8 fw-normal">{{ auditrequest.auditdetail.audittype}}</span>
+        </div><br>
       </h3>
-      <h2>
-        <div class="row fs-3">
+      <div>
+        <div class="row fs-4 fw-bold">
           <span class="col-4">Execution Status:</span>
-           <span *ngIf="auditResponse['executionstatus'] == 'GREEN';else red" class="col-1 badge bg-success">{{ auditResponse["executionstatus"] }}</span>
-        <ng-template #red>
-          <span class="col-1 badge bg-danger">{{ auditResponse["executionstatus"] }}</span>
-        </ng-template>
-      </div>
+          <span *ngIf="auditResponse['executionstatus'] == 'GREEN';else red" class="col-1 badge bg-success">{{
+            auditResponse["executionstatus"] }}</span>
+          <ng-template #red>
+            <span class="col-1 badge bg-danger">{{ auditResponse["executionstatus"] }}</span>
+          </ng-template>
+        </div>
         <br>
 
-        <div class="row fs-3">
+        <div class="row fs-4 fw-bold">
           <span class="col-4">Action Duration:</span>
-          <span class="col-4 badge bg-info">{{ auditResponse["actionduration"] }}</span></div>
-      </h2>      
+          <span class="col-4 badge bg-info">{{ auditResponse["actionduration"] }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
