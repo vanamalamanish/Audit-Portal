@@ -1,5 +1,6 @@
+<app-header></app-header>
 <div class="container mt-5">
-  <h3 *ngIf="error!=null" class=" alert alert-danger fw-normal text-center">{{error | titlecase}}</h3>
+  <p *ngIf="error!=null" class=" alert alert-danger fw-normal text-center">{{error | titlecase}}</p>
   <div class="card">
     <div class="card-body">
       <h5 class="card-title text-center">Login</h5>
