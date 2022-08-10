@@ -14,7 +14,7 @@ export class AuthenticationService {
   constructor(private http:HttpClient) { }
   
 
-  url:string="http://localhost:8081/auth";
+  url:string="http://cde015-pod1-audit-auth-lb-1881827405.ap-south-1.elb.amazonaws.com/auth";
   login(userCredentials:UserCredentials):Observable<String>{
     this.userName = userCredentials.userName;
     return this.http.post<String>(this.url+"/login",userCredentials,{responseType:'text' as 'json'})
@@ -26,7 +26,7 @@ export class AuthenticationService {
   }
 
   errorHandler(error:HttpErrorResponse){
-    return throwError(error.error || "Server Error");
+    return throwError(error.error);
   }
 
   isLoggedIn(){
