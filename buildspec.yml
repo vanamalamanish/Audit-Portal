@@ -2,21 +2,18 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+        nodejs: 14
     commands:
-      - echo installing nodejs...
-      - apt install nodejs npm
-  pre_build:
-    commands:
-      - echo installing dependencies...
-      - npm i -g @angular/cli
-      - npm install
+        - echo Installing source NPM dependencies...
+        - npm install
+        - npm install -g @angular/cli
   build:
     commands:
-      # - echo testing...
-      # - echo building...
-      - ng build --prod
+        - echo Build started 
+        - ng build
 artifacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base-directory: dist/audit-portal
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: no
