@@ -6,6 +6,7 @@ phases:
         nodejs: 16
     commands:
         - echo Installing source NPM dependencies...
+        - npm upgrade
         - npm install
         - npm install -g @angular/cli
   build:
@@ -15,5 +16,5 @@ phases:
 artifacts:
     files:
         - '**/*'
-    base-directory: 'dist*'
+    base-directory: 'dist/audit-portal*'
     discard-paths: no
