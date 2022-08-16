@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuditRequestModel } from '../AuditRequestModel';
 import { ProjectDetailsService } from '../project-details.service';
 import { AuditResponse } from './AuditResponse';
 
@@ -12,7 +11,7 @@ export class SeverityService {
 
   constructor(private projectDetailsService:ProjectDetailsService,private http:HttpClient) { }
   
-  url:string = "http://localhost:8084/severity";
+  url:string = "http://cde015-p1-audit-severity-lb-164246684.ap-south-1.elb.amazonaws.com/severity";
   postSeverity():Observable<AuditResponse>{
     console.log(this.projectDetailsService.getAuditRequestModel());
     const auditRequest= this.projectDetailsService.getAuditRequestModel();
