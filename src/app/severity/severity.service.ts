@@ -11,7 +11,7 @@ export class SeverityService {
 
   constructor(private projectDetailsService:ProjectDetailsService,private http:HttpClient) { }
   
-  url:string = "http://cde015-p1-audit-severity-lb-164246684.ap-south-1.elb.amazonaws.com/severity";
+  url:string = "http://localhost:8084/severity";
   postSeverity():Observable<AuditResponse>{
     console.log(this.projectDetailsService.getAuditRequestModel());
     const auditRequest= this.projectDetailsService.getAuditRequestModel();
